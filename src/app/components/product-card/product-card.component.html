@@ -1,1 +1,11 @@
-<p>product-card works!</p>
+<div class="card">
+    <img [src]="product.imageUrl" [alt]="product.name" class="product-image">
+    <div class="card-body">
+      <h2>{{ product.name }}</h2>
+      <p>{{ product.description }}</p>
+      <p class="price">${{ product.price | number:'1.2-2' }}</p>
+      <button (click)="addToCart()">🛒 Agregar al carrito</button>
+      <a [routerLink]="['/product', product.id]">Ver más</a>
+    </div>
+  </div>
+  

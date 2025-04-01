@@ -1,3 +1,4 @@
+import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 
 @Component({
@@ -5,7 +6,7 @@ import { Component } from '@angular/core';
   standalone: true,
   templateUrl: './footer.component.html',
   styleUrl: './footer.component.css',
-  imports: [],
+  imports: [CommonModule],
 
 })
 export class FooterComponent {

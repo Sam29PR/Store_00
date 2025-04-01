@@ -1,1 +1,26 @@
-<p>cart works!</p>
+<!-- Botón para abrir el carrito -->
+<button class="cart-toggle-btn" (click)="toggleCart()">🛒 Ver Carrito</button>
+
+<!-- Menú lateral (Carrito) -->
+<div class="cart-sidebar" [class.open]="isCartOpen">
+  <button class="close-btn" (click)="toggleCart()">✖</button>
+  <h2>🛒 Tu Carrito</h2>
+
+  <div *ngIf="cartItems.length === 0">
+    <p>El carrito está vacío.</p>
+  </div>
+
+  <div *ngFor="let item of cartItems; let i = index" class="cart-item">
+    <img [src]="item.image" alt="{{ item.name }}">
+    <div class="cart-details">
+      <p>{{ item.name }}</p>
+      <p>Precio: ${{ item.price | number: '1.2-2' }}</p>
+      <p>Cantidad: {{ item.quantity }}</p>
+    </div>
+    <button (click)="removeItem(i)">❌</button>
+  </div>
+
+  <div class="cart-total" *ngIf="cartItems.length > 0">
+    <h3>Total: ${{ getTotalPrice() | number: '1.2-2' }}</h3>
+  </div>
+</div>
